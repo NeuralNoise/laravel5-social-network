@@ -11,9 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get( '/',
+    [
+        'uses' => '\App\Http\Controllers\HomeController@index',
+        'as'   => 'home'
+    ]
+);
 
 /*
 |--------------------------------------------------------------------------
