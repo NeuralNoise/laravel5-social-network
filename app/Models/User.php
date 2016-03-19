@@ -23,4 +23,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    protected static $rules = [
+        'email'    => 'required|unique:users|email|max:255',
+        'username' => 'required|unique:users|alpha_dash|max:20',
+        'password' => 'required|min:6',
+    ];
 }
