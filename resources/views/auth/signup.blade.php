@@ -4,7 +4,7 @@
 <h3>Sign Up</h3>
 <div class="row">
   <div class="col-lg-6">
-    <form class="form-vertical" role="form" method="post" action="{{ route('auth.signup') }}">
+    <form class="form-vertical" role="form" method="post" action="{{ action('AuthController@postSignUp') }}">
       <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
         <label for="email" class="control-label">Your email address</label>
         <input type="text" name="email" class="form-control" id="email" value="{{ old('email') ?: '' }}">
