@@ -18,12 +18,6 @@ Route::get( '/',
     ]
 );
 
-Route::get( 'signup',
-    [
-        'uses' => 'AuthController@getSignup',
-        'as'   => 'auth.signup'
-    ]
-);
 
 /*
 |--------------------------------------------------------------------------
@@ -38,4 +32,23 @@ Route::get( 'signup',
 
 Route::group(['middleware' => ['web']], function () {
     //
+
+    Route::get( 'signup',
+        [
+            'uses' => 'AuthController@getSignUp',
+            'as'   => 'auth.signup'
+        ]
+    );
+
+    Route::post( 'signup',
+        [ 'uses' => 'AuthController@postSignUp', 'as'   => 'auth.signup' ]
+    );
+
+
+    Route::get( 'signin',
+        [
+            'uses' => 'AuthController@getSignIn',
+            'as'   => 'auth.signin'
+        ]
+    );
 });
