@@ -27,4 +27,11 @@ class AuthController extends Controller
 
         return redirect()->route( 'home' )->with( 'info', 'Your account has been created and you can now sign in' );
     }
+
+    public function postSignIn( Request $request ){
+        $this->validate( $request, [
+            'email'    => 'required',
+            'password' => 'required'
+        ] );
+    }
 }
