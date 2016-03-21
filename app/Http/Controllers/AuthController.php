@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Models\User;
+use Illuminate\Support\Facades\Redirect;
 
 class AuthController extends Controller
 {
@@ -33,5 +35,9 @@ class AuthController extends Controller
             'email'    => 'required',
             'password' => 'required'
         ] );
+
+        if ( !Auth::attempt( $request->only( [ 'email', 'password' ] ), $request->has( 'remember' ) ) ) {
+            return redirect()->back()->with( 'info', 'Could not sign you in with those details' );
+        }
     }
 }
