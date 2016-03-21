@@ -24,7 +24,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    protected static $rules = [
+    public static $rules = [
         'email'    => 'required|unique:users|email|max:255',
         'username' => 'required|unique:users|alpha_dash|max:20',
         'password' => 'required|min:6',
