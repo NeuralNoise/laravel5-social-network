@@ -4,7 +4,7 @@
 	<h3>Sign in</h3>
 	<div class="row">
         <div class="col-lg-6">
-            <form class="form-vertical" role="form" method="post" action="#">
+            <form class="form-vertical" role="form" method="post" action="{{ route('auth.signin') }}">
                     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                         <label for="email" class="control-label">Email</label>
                         <input type="text" name="email" class="form-control" id="email">
