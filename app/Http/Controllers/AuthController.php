@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Auth;
 use App\Http\Requests;
 use App\Models\User;
 use Illuminate\Support\Facades\Redirect;
@@ -39,5 +39,7 @@ class AuthController extends Controller
         if ( !Auth::attempt( $request->only( [ 'email', 'password' ] ), $request->has( 'remember' ) ) ) {
             return redirect()->back()->with( 'info', 'Could not sign you in with those details' );
         }
+
+        return redirect()->route( 'home' )->with( 'info', 'You are now signed in' );
     }
 }
