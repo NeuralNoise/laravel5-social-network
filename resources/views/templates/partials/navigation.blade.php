@@ -20,14 +20,14 @@
                         </form>
                         {{--@endif--}}
                         <ul class="nav navbar-nav navbar-right">
-                                {{--@if(Auth::check())--}}
+                                @if(Auth::check())
                                 <li><a href="{{ route('profile.index', ['username' => Auth::user()->username]) }}">{{ Auth::user()->getNameOrUsername() }}</a></li>
 {{--                                <li><a href="{{ route('profile.edit') }}">Update profile</a></li>--}}
-{{--                                <li><a href="{{ route('auth.signout') }}">Sign out</a></li>--}}
-                                {{--@else--}}
+                                <li><a href="{{ route('auth.signout') }}">Sign out</a></li>
+                                @else
                                 <li><a href="{{ route('auth.signup') }}">Sign up</a></li>
                                 <li><a href="{{ route('auth.signin') }}">Sign in</a></li>
-                                {{--@endif--}}
+                                @endif
                         </ul>
                 </div>
         </div>
