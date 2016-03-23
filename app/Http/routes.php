@@ -33,26 +33,14 @@ Route::get( '/',
 Route::group( [ 'middleware' => [ 'web' ] ], function () {
 	//
 
-	Route::get( 'signup',
-			[
-					'uses' => 'AuthController@getSignUp',
-					'as'   => 'auth.signup'
-			]
-	);
+	Route::get( 'signup',	[	'uses' => 'AuthController@getSignUp',	'as'   => 'auth.signup'	]	);
 
-	Route::post( 'signup',
-			[ 'uses' => 'AuthController@postSignUp', 'as' => 'auth.signup' ]
-	);
+	Route::post( 'signup', [ 'uses' => 'AuthController@postSignUp', 'as' => 'auth.signup' ]	);
 
-	Route::post( 'signin',
-			[ 'uses' => 'AuthController@postSignIn', 'as' => 'auth.signin' ]
-	);
+	Route::post( 'signin', [ 'uses' => 'AuthController@postSignIn', 'as' => 'auth.signin' ]	);
 
+	Route::get( 'signin', [	'uses' => 'AuthController@getSignIn',	'as'   => 'auth.signin'	]	);
 
-	Route::get( 'signin',
-			[
-					'uses' => 'AuthController@getSignIn',
-					'as'   => 'auth.signin'
-			]
-	);
+	Route::get( 'signout',	[	'uses' => 'AuthController@getSignOut',	'as'   => 'auth.signout'	]	);
+
 } );
