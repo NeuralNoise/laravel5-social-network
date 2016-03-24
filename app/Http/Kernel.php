@@ -31,6 +31,14 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
         ],
 
+        'auth'=>[
+            \App\Http\Middleware\Authenticate::class,
+        ],
+
+        'guest'=>[
+            \App\Http\Middleware\RedirectIfAuthenticated::class,
+        ],
+
         'api' => [
             'throttle:60,1',
         ],
