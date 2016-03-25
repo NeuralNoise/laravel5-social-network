@@ -11,7 +11,7 @@
                                 {{--<li><a href="{{ route('friend.index') }}">Friends</a></li>--}}
                         </ul>
 
-                        <form action="/" role="search" class="navbar-form navbar-left">
+                        <form action="{{ route('search.results') }}" role="search" class="navbar-form navbar-left">
                                 <div class="form-group">
                                         <input type="text" name="query" class="form-control"
                                         placeholder="Find people"/>
