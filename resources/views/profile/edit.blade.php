@@ -3,7 +3,7 @@
 @section('content')
 	<div class="row">
             <div class="col-lg-6">
-                <form class="form-vertical" role="form" method="post" action"{{ route('profile.edit') }}">
+                <form class="form-vertical" role="form" method="post" action"{{ route('profile.edit') }}" >
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group{{ $errors->has('first_name') ? ' has-error': '' }}">
