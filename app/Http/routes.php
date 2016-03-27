@@ -43,9 +43,7 @@ Route::group( [ 'middleware' => [ 'web', 'guest' ] ], function () {
 
 	Route::get( 'signout', [ 'uses' => 'AuthController@getSignOut', 'as' => 'auth.signout' ] );
 
-	Route::get( 'profile.index', [ 'as' => 'profile.index' ], function () {
-		return 'hello profile';
-	} );
+	Route::get( 'user/{username}', [ 'uses' => 'ProfileController@getProfile', 'as' => 'profile.index' ] );
 
 	Route::get( '/search', [ 'uses' => 'SearchController@getResults', 'as' => 'search.results' ] );
 
