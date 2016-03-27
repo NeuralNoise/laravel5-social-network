@@ -34,16 +34,17 @@ Route::group( [ 'middleware' => [ 'web', 'guest' ] ], function () {
 	//
 
 	Route::get( 'signup', [ 'uses' => 'AuthController@getSignUp', 'as' => 'auth.signup' ] );
-
 	Route::post( 'signup', [ 'uses' => 'AuthController@postSignUp', 'as' => 'auth.signup' ] );
 
-	Route::post( 'signin', [ 'uses' => 'AuthController@postSignIn', 'as' => 'auth.signin' ] );
-
 	Route::get( 'signin', [ 'uses' => 'AuthController@getSignIn', 'as' => 'auth.signin' ] );
+	Route::post( 'signin', [ 'uses' => 'AuthController@postSignIn', 'as' => 'auth.signin' ] );
 
 	Route::get( 'signout', [ 'uses' => 'AuthController@getSignOut', 'as' => 'auth.signout' ] );
 
 	Route::get( 'user/{username}', [ 'uses' => 'ProfileController@getProfile', 'as' => 'profile.index' ] );
+
+	Route::get( 'profile/edit', [ 'uses' => 'ProfileController@getEdit', 'as' => 'profile.edit' ] );
+	Route::post( 'profile/edit', [ 'uses' => 'ProfileController@postEdit', 'as' => 'profile.edit' ] );
 
 	Route::get( '/search', [ 'uses' => 'SearchController@getResults', 'as' => 'search.results' ] );
 
