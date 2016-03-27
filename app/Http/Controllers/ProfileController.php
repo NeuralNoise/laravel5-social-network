@@ -21,7 +21,14 @@ class ProfileController extends Controller
     return view( 'profile.edit' );
   }
 
-  public function postEdit( ){
+  public function postEdit(Request $request){
+    $this->validate( $request, [
+        'first_name' => 'alpha|max:255',
+        'last_name'  => 'alpha|max:255',
+        'location'   => 'max:20',
+    ] );
 
+    Auth::user()->update( $request );
+    return redirect()->route( 'profile.edit' )->with( 'info', 'Your profile was updated' );
   }
 }
