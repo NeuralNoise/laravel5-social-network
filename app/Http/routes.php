@@ -46,6 +46,8 @@ Route::group( [ 'middleware' => [ 'web', 'guest' ] ], function () {
 	Route::get( 'profile/edit', [ 'uses' => 'ProfileController@getEdit', 'as' => 'profile.edit' ] );
 	Route::post( 'profile/edit', [ 'uses' => 'ProfileController@postEdit', 'as' => 'profile.edit' ] );
 
-	Route::get( '/search', [ 'uses' => 'SearchController@getResults', 'as' => 'search.results' ] );
+	Route::get( 'search', [ 'uses' => 'SearchController@getResults', 'as' => 'search.results' ] );
+
+	Route::get( 'friends', [ 'uses' => 'FriendsController@getIndex', 'as' => 'friends.index' ] );
 
 } );
