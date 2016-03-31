@@ -66,6 +66,11 @@ class User extends Authenticatable
     }
 
     public function friendRequests( ){
-        return $this->friendsOfMine()->wherePivot('accepted', false)->get();
+        return $this->friendsOfMine()->wherePivot( 'accepted', false )->get();
     }
+
+    public function friendRequestsPending( ){
+        return $this->friendOf()->wherePivot( 'accepted', false )->get();
+    }
+
 }
