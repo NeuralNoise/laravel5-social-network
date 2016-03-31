@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -11,6 +12,10 @@ class FriendController extends Controller
 {
     //
     public function getIndex( ){
-        return view( 'friends.index' );
+        $auth_user = Auth::user();
+        $friends = $auth_user->friends();
+        $friend_requests = $auth_user->friendRequests();
+
+        return view( 'friends.index', compact('friends', 'friend_requests') );
     }
 }
