@@ -7,6 +7,9 @@
           <hr>
      </div>
      <div class="col-lg-4 col-lg-offset-3">
+           @if(Auth::user()->hasFriendRequestPending($user))
+                <p>Waiting for {{ $user->getNameOrUsername() }} to accept your request.</p>
+           @endif
           <h4>{{ $user->getFirstNameOrUsername() }}'s friends</h4>
           @if(!$user->friends()->count())
             <p>{{ $user->getFirstNameOrUsername() }} has no friends</p>
