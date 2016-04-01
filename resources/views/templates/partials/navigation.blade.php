@@ -1,11 +1,11 @@
 <nav class="navbar navbar-default" role="navigation">
         <div class="container">
                 <div class="navbar-header">
-                        {{--<a href="{{ route('home') }}" class="navbar-brand">Chatty App</a>--}}
+                        <a href="{{ route('home') }}" class="navbar-brand">Chatty App</a>
                 </div>
 
                 <div class="collapse navbar-collapse">
-                        {{--@if(Auth::check())--}}
+                    @if(Auth::check())
                         <ul class="nav navbar-nav">
                                 <li><a href="#">Timeline</a></li>
                                 <li><a href="{{ route('friend.index') }}">Friends</a></li>
@@ -18,9 +18,10 @@
                                 </div>
                                 <button type="submit" class="btn btn-default">Search</button>
                         </form>
-                        {{--@endif--}}
+                    @endif
                         <ul class="nav navbar-nav navbar-right">
                                 @if(Auth::check())
+
                                 <li><a href="{{ route('profile.index', ['username' => Auth::user()->username]) }}">{{ Auth::user()->getNameOrUsername() }}</a></li>
                                 <li><a href="{{ route('profile.edit') }}">Update profile</a></li>
                                 <li><a href="{{ route('auth.signout') }}">Sign out</a></li>
