@@ -36,11 +36,11 @@ class AuthController extends Controller
             'password' => 'required'
         ] );
 
-        if ( !Auth::attempt( $request->only( [ 'email', 'password' ] ), $request->has( 'remember' ) ) ) {
-            return redirect()->back()->with( 'info', 'Could not sign you in with those details' );
+        if ( Auth::attempt( $request->only( [ 'email', 'password' ] ), $request->has( 'remember' ) ) ) {
+            return redirect()->intended( 'home' )->with( 'info', 'You are now signed in' );
         }
 
-        return redirect()->route( 'home' )->with( 'info', 'You are now signed in' );
+            return redirect()->back()->with( 'info', 'Could not sign you in with those details' );
     }
 
     public function getSignOut( ){
