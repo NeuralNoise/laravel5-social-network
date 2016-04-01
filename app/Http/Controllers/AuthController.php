@@ -40,7 +40,7 @@ class AuthController extends Controller
             return redirect()->intended( 'home' )->with( 'info', 'You are now signed in' );
         }
 
-            return redirect()->back()->with( 'info', 'Could not sign you in with those details' );
+            return redirect()->back()->withErrors('Could not sign you in with those details' );
     }
 
     public function getSignOut( ){
