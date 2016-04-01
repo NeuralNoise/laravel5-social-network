@@ -24,6 +24,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    protected $table = 'users';
+
     public static $rules = [
         'email'    => 'required|unique:users|email|max:255',
         'username' => 'required|unique:users|alpha_dash|max:20',
@@ -53,11 +55,11 @@ class User extends Authenticatable
     }
 
     public function friendsOfMine( ){
-        return $this->belongsToMany( 'User', 'friends', 'user_id', 'friend_id' );
+        return $this->belongsToMany( 'App\Models\User', 'friends', 'user_id', 'friend_id' );
     }
 
     public function friendOf(){
-        return $this->belongsToMany( 'User', 'friends', 'friend_id', 'user_id' );
+        return $this->belongsToMany( 'App\Models\User', 'friends', 'friend_id', 'user_id' );
     }
 
     public function friends( ){
