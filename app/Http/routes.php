@@ -30,7 +30,7 @@ Route::get( '/',
 |
 */
 
-Route::group( [ 'middleware' => [ 'web', 'guest' ] ], function () {
+Route::group( [ 'middleware' => [ 'web' ] ], function () {
 	//
 
 	Route::get( 'signup', [ 'uses' => 'AuthController@getSignUp', 'as' => 'auth.signup' ] );
@@ -48,6 +48,6 @@ Route::group( [ 'middleware' => [ 'web', 'guest' ] ], function () {
 
 	Route::get( 'search', [ 'uses' => 'SearchController@getResults', 'as' => 'search.results' ] );
 
-	Route::get( 'friends', [ 'uses' => 'FriendsController@getIndex', 'as' => 'friends.index' ] );
+	Route::get( 'friend', [ 'uses' => 'FriendsController@getIndex', 'as' => 'friend.index' ] );
 
 } );
