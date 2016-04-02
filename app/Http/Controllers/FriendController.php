@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Auth;
+use Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -17,5 +17,9 @@ class FriendController extends Controller
         $friend_requests = $auth_user->friendRequests();
 
         return view( 'friends.index', compact('friends', 'friend_requests') );
+    }
+
+    public function getAdd( $username ){
+        dd( $username );
     }
 }
