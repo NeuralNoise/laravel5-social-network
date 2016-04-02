@@ -48,6 +48,7 @@ Route::group( [ 'middleware' => [ 'web' ] ], function () {
 
 	Route::get( 'search', [ 'uses' => 'SearchController@getResults', 'as' => 'search.results' ] );
 
-	Route::get( 'friend', [ 'uses' => 'FriendsController@getIndex', 'as' => 'friend.index' ] );
+	Route::get( 'friends', [ 'uses' => 'FriendController@getIndex', 'as' => 'friend.index' ] );
+	Route::get( 'friends/add/{username}', [ 'uses' => 'FriendController@getAdd', 'as' => 'friend.add' ] );
 
 } );
