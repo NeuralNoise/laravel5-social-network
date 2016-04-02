@@ -37,7 +37,7 @@ class AuthController extends Controller
         ] );
 
         if ( Auth::attempt( $request->only( [ 'email', 'password' ] ), $request->has( 'remember' ) ) ) {
-            return redirect()->intended( 'home' )->with( 'info', 'You are now signed in' );
+            return redirect()->intended()->with( 'info', 'You are now signed in' );
         }
 
             return redirect()->back()->withErrors('Could not sign you in with those details' );
