@@ -20,6 +20,11 @@ class FriendController extends Controller
     }
 
     public function getAdd( $username ){
-        dd( $username );
+        $user = User::where( 'username', $username )->first();
+
+        if(!$user){
+            return redirect()->back()->with('info', "User couldn't be find");
+        }
+
     }
 }
