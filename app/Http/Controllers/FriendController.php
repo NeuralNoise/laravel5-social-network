@@ -26,5 +26,12 @@ class FriendController extends Controller
             return redirect()->back()->with('info', "User couldn't be find");
         }
 
+        if ( Auth::user()->hasFriendRequestPending( $user ) ||
+             $user->hasFriendRequestPending(Auth::user())) {
+            return redirect()
+                ->route( 'profile.index', [ 'username' => $user->username ] )
+                ->with('info', 'Friend request already pending');
+        }
+
     }
 }
