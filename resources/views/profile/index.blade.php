@@ -19,7 +19,7 @@
                      <input type="hidden" name="_token" value="{{ csrf_token() }}">
                  </form>
             @else
-                 <a href="#" class="btn btn-primary">Add as friend</a>
+                 <a href="{{ route('friend.add', ['username'=>$user->username]) }}" class="btn btn-primary">Add as friend</a>
             @endif
 
             <h4>{{ $user->getFirstNameOrUsername() }}'s friends</h4>
