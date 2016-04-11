@@ -18,7 +18,7 @@
                      <input type="submit" value="Delete Friend" class="btn btn-primary">
                      <input type="hidden" name="_token" value="{{ csrf_token() }}">
                  </form>
-            @else
+            @elseif (Auth::user()->id !== $user->id)
                  <a href="{{ route('friends.add', ['username'=>$user->username]) }}" class="btn btn-primary">Add as friend</a>
             @endif
 
