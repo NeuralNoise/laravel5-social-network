@@ -50,5 +50,6 @@ Route::group( [ 'middleware' => [ 'web' ] ], function () {
 
 	Route::get( 'friends', [ 'uses' => 'FriendController@getIndex', 'as' => 'friend.index' ] );
 	Route::get( 'friends/add/{username}', [ 'uses' => 'FriendController@getAdd', 'as' => 'friend.add' ] );
+	Route::get( 'friends/accept/{username}', [ 'uses' => 'FriendController@getAdd', 'as' => 'friend.accept' ] );
 
 } );
