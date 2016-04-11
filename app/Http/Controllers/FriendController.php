@@ -43,4 +43,8 @@ class FriendController extends Controller
         return $redirect_profile->with( 'info', 'Friend request sent' );
 
     }
+
+    public function getAccept( $username ){
+        
+    }
 }
