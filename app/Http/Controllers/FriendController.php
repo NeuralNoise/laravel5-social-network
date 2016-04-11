@@ -45,6 +45,19 @@ class FriendController extends Controller
     }
 
     public function getAccept( $username ){
-        
+        $user             = User::where( 'username', $username )->first();
+
+        if ( !$user ) {
+            return redirect()->back()->with( 'info', "User couldn't be find" );
+        }
+
+        if ( !Auth::user()->hasFriendRequestReceived($user) ) {
+            return redirect()->route( 'home' );
+        }
+
+        Auth::user()->acceptFriendRequest($user);
+
+        return redirect()->route( 'profile.index', [ 'username' => $username ] )
+                         ->with('info','Friend request accepted.');
     }
 }
