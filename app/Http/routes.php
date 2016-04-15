@@ -11,14 +11,6 @@
 |
 */
 
-Route::get( '/',
-		[
-				'uses' => 'HomeController@index',
-				'as'   => 'home'
-		]
-);
-
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -32,6 +24,7 @@ Route::get( '/',
 
 Route::group( [ 'middleware' => [ 'web' ] ], function () {
 	//
+	Route::get( '/', [ 'uses' => 'HomeController@index', 'as'   => 'home'	]);
 
 	Route::get( 'signup', [ 'uses' => 'AuthController@getSignUp', 'as' => 'auth.signup' ] );
 	Route::post( 'signup', [ 'uses' => 'AuthController@postSignUp', 'as' => 'auth.signup' ] );
@@ -51,5 +44,5 @@ Route::group( [ 'middleware' => [ 'web' ] ], function () {
 	Route::get( 'friends', [ 'uses' => 'FriendController@getIndex', 'as' => 'friend.index' ] );
 	Route::get( 'friends/add/{username}', [ 'uses' => 'FriendController@getAdd', 'as' => 'friend.add' ] );
 	Route::get( 'friends/accept/{username}', [ 'uses' => 'FriendController@getAccept', 'as' => 'friend.accept' ] );
-
+	Route::post('status', [ 'uses' => 'StatusController@postStatus', 'as' => 'status.post' ]);
 } );
