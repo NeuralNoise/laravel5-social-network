@@ -11,7 +11,11 @@ class HomeController extends Controller
     //
     public function index( ){
         if ( Auth::check() ) {
-            return view( 'timeline.index' );
+            $statuses = Status::where(function($query){
+                $query->where('user_id', Auth::user()->id)
+                      ->orWhereIn('user_id', Auth::user()->friends->lists('id'));
+            });
+            return view( 'timeline.index', compact('statuses') );
         }
         return view( 'home' );
     }
