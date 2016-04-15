@@ -9,6 +9,8 @@ class StatusController extends Controller
 {
     //
     public function postStatus(Request $request ){
-        
+        $this->validate( $request, [
+            'status' => 'required|max:1000'
+        ] );
     }
 }
