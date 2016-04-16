@@ -70,7 +70,7 @@ class User extends Authenticatable
 
     public function statuses()
     {
-        $this->hasMany('Status', 'user_id');
+        return $this->hasMany('App\Models\Status', 'user_id');
     }
 
     public function friends()

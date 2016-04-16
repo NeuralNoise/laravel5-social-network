@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,6 +12,6 @@ class Status extends Model {
 	];
 
     public function user( ){
-		return belongsTo('User', 'user_id');
+		return $this->belongsTo('App\Models\User', 'user_id');
    }
 }
