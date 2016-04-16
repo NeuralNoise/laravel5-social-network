@@ -43,6 +43,6 @@ Route::group( [ 'middleware' => [ 'web' ] ], function () {
 
 	Route::get( 'friends', [ 'uses' => 'FriendController@getIndex', 'as' => 'friend.index' ] );
 	Route::get( 'friends/add/{username}', [ 'uses' => 'FriendController@getAdd', 'as' => 'friends.add' ] );
-	Route::get( 'friends/accept/{username}', [ 'uses' => 'FriendController@getAccept', 'as' => 'friend.accept' ] );
+	Route::get( 'friends/accept/{username}', [ 'uses' => 'FriendController@getAccept', 'as' => 'friends.accept' ] );
 	Route::post('status', [ 'uses' => 'StatusController@postStatus', 'as' => 'status.post' ]);
 } );
