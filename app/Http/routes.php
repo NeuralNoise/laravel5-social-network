@@ -42,7 +42,7 @@ Route::group( [ 'middleware' => [ 'web' ] ], function () {
 	Route::get( 'search', [ 'uses' => 'SearchController@getResults', 'as' => 'search.results' ] );
 
 	Route::get( 'friends', [ 'uses' => 'FriendController@getIndex', 'as' => 'friend.index' ] );
-	Route::get( 'friends/add/{username}', [ 'uses' => 'FriendController@getAdd', 'as' => 'friend.add' ] );
+	Route::get( 'friends/add/{username}', [ 'uses' => 'FriendController@getAdd', 'as' => 'friends.add' ] );
 	Route::get( 'friends/accept/{username}', [ 'uses' => 'FriendController@getAccept', 'as' => 'friend.accept' ] );
 	Route::post('status', [ 'uses' => 'StatusController@postStatus', 'as' => 'status.post' ]);
 } );
