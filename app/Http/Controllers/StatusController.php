@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use Status;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
@@ -24,5 +25,7 @@ class StatusController extends Controller
         $this->validate($request, [
             'reply' => 'required|max:1000'
         ]);
+
+        $status = Status::notReply()->find($statusId);
     }
 }
