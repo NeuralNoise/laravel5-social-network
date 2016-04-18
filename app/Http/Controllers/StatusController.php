@@ -27,10 +27,16 @@ class StatusController extends Controller
             'reply' => 'required|max:1000'
         ]);
 
+        $auth_user = Auth::user();
+        $redirect_home = redirect()->route('home');
         $status = Status::notReply()->find($statusId);
 
         if (!$status) {
-            return redirect()->route('home');
+            return $redirect_home;
+        }
+
+        if (!$auth_user->isFriendsWith($status->user) && $auth_user->id !== $status->user->id) {
+            return $redirect_home;
         }
     }
 }
