@@ -16,16 +16,21 @@ class StatusController extends Controller
             'status' => 'required|max:1000'
         ]);
 
-        Auth::user()->statuses()->create(['body'=>$request->input('status')]);
+        Auth::user()->statuses()->create(['body' => $request->input('status')]);
 
         return redirect()->route('home')->with('info', 'Status posted');
     }
 
-    public function postReply(Request $request, $statusId){
+    public function postReply(Request $request, $statusId)
+    {
         $this->validate($request, [
             'reply' => 'required|max:1000'
         ]);
 
         $status = Status::notReply()->find($statusId);
+
+        if (!$status) {
+            return redirect()->route('home');
+        }
     }
 }
