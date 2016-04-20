@@ -3,8 +3,16 @@
 @section('content')
 	<div class="row">
     <div class="col-lg-5">
+
           @include('user.partials.userblock')
           <hr>
+
+           @if (!$statuses->count())
+              <p>{{ $user->getFirstNameOrUsername() }} hasnt posted anything yet</p>
+           @else
+
+           @endif
+
      </div>
      <div class="col-lg-4 col-lg-offset-3">
             @if (Auth::user()->hasFriendRequestPending($user))
