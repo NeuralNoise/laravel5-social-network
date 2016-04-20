@@ -15,7 +15,11 @@ class ProfileController extends Controller
       if(!$user) {
         return redirect()->back()->with( 'info', 'User not exists' );
       }
-    return view( 'profile.index', compact( 'user' ) );
+
+    $statuses = $user->statuses()->notReply()->get();
+
+    return view( 'profile.index', compact( ['user','statuses'] ) )
+        ->with('authUserisFriend', Auth::user()->isFriendsWith($user));
   }
 
   public function getEdit() {
