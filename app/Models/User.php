@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Status;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -119,5 +120,13 @@ class User extends Authenticatable
     public function likes()
     {
         return $this->morphMany('App\Models\Likes', 'likeable');
+    }
+
+    public function hasLikedStatus(Status $status)
+    {
+        return (bool) $status->likes()->where('likeable_id', $status->id)
+            ->where('likeable_type', get_class($status))
+            ->where('user_id', $this->id)
+            ->count();
     }
 }
