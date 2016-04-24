@@ -29,6 +29,6 @@ class Status extends Model
 
     public function likes()
     {
-        return $this->morphMany('App\Models\Likes', 'likeable');
+        return $this->morphMany('App\Models\Like', 'likeable');
     }
 }
