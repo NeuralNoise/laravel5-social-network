@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use Status;
+use App\Models\Status;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
@@ -23,8 +23,8 @@ class StatusController extends Controller
 
     public function postReply(Request $request, $statusId)
     {
-        $this->validate($request, [
-            'reply' => 'required|max:1000'
+        $this->validate($request,[
+            "reply-{$statusId}" => 'required|max:1000',
         ]);
 
         $auth_user = Auth::user();
@@ -46,5 +46,9 @@ class StatusController extends Controller
         $status->replies()->save($reply);
 
         return redirect()->back();
+    }
+
+    public function getLike($likeId){
+        dd($likeId);
     }
 }
