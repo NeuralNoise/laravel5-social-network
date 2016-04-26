@@ -59,5 +59,10 @@ class StatusController extends Controller
             return $redirect_home;
         }
 
+        if(Auth::user()->hasLikedStatus($status))
+        {
+            return redirect()->back();
+        }
+
     }
 }
