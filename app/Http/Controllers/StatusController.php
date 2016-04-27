@@ -56,7 +56,7 @@ class StatusController extends Controller
             return $redirect_home;
         }
 
-        if(!Auth::user()->isFriendWith($status->user)){
+        if(!Auth::user()->isFriendsWith($status->user)){
             return $redirect_home;
         }
 
