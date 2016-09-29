@@ -47,4 +47,8 @@ Route::group( [ 'middleware' => [ 'web' ] ], function () {
 	Route::post('status', [ 'uses' => 'StatusController@postStatus', 'as' => 'status.post' ]);
 	Route::post('status/{statusId}/reply', [ 'uses' => 'StatusController@postReply', 'as' => 'status.reply' ]);
 	Route::get('/status/{statusId}/like', [ 'uses'	=> 'StatusController@getLike', 'as'	=> 'status.like' ]);
+
+	//Facebook
+	Route::get('/redirect','FacebookAuthController@redirect');
+	Route::get('/callback','FacebookAuthController@callback');
 } );
