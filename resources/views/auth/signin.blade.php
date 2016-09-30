@@ -19,10 +19,18 @@
                 			<span class="help-block">{{ $errors->first('password') }}</span>
                			 @endif
                     </div>
-                    <div class="checkbox">
-                        <label>
-                                <input type="checkbox" name="remember"> Remember me
-                        </label>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4 pull-left">
+                                <input type="checkbox" class="pull-left" name="remember" />&nbsp; Remember me
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <a href="#">Forgot Password?</a>
+                            </div>
+                            <div class="col-md-4">
+                                <a href="redirect" class="pull-right">Facebook Login</a>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-gorup">
                             <button type="submit" class="btn btn-default">Sign in</button>
