@@ -11,14 +11,16 @@ class CreateStatusesTable extends Migration {
 	 */
 	public function up() {
 		//
-		Schema::create( 'statuses', function ( Blueprint $table ) {
-			$table->increments( 'id' );
-			$table->integer( 'user_id' )->unsigned();
-			$table->foreign( 'user_id' )->references( 'id' )->on( 'users' );
-			$table->integer( 'parent_id' )->nullable();
-			$table->text( 'body' );
-			$table->timestamps();
-		} );
+		if (Schema::hasTable('statuses')) {
+			Schema::create('statuses', function (Blueprint $table) {
+				$table->increments('id');
+				$table->integer('user_id')->unsigned();
+				$table->foreign('user_id')->references('id')->on('users');
+				$table->integer('parent_id')->nullable();
+				$table->text('body');
+				$table->timestamps();
+			});
+		}
 	}
 
 	/**
