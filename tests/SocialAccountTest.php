@@ -11,8 +11,21 @@ class SocialAccountTest extends TestCase
      *
      * @return void
      */
-    public function testExample()
+    public function testSocialAccountRedirect()
     {
-        $this->assertTrue(true);
+        $this->visit('/signin')->click('Facebook Login');
+    }
+
+    /**
+     * A basic test example.
+     *
+     * @return void
+     */
+    public function testSocialAccountCallback()
+    {
+        // replace the return value of true with whatever values you wish to return for your test
+        Socialite::shouldReceive('driver->fields->scopes->user')->andReturn(true);
+
+        $this->visit('/callback');
     }
 }
