@@ -10,26 +10,49 @@ use Illuminate\Support\Facades\Redirect;
 
 class AuthController extends Controller
 {
-    //
+    /**
+     * Show Sign Up page
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function getSignUp() {
         return view( 'auth.signup' );
     }
 
+    /**
+     * Show Sign In page
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function getSignIn() {
         return view( 'auth.signin' );
     }
 
+    /**
+     * Save registration data
+     *
+     * @param Request $request
+     * @return mixed
+     */
     public function postSignUp( Request $request ) {
+
         $this->validate( $request, User::$rules );
+
         User::create( [
             'email'    => $request->input( 'email' ),
             'username' => $request->input( 'username' ),
             'password' => bcrypt( $request->input( 'password' ) ),
         ] );
 
-        return redirect()->route( 'home' )->with( 'info', 'Your account has been created and you can now sign in' );
+        return redirect()->intended('home')->with( 'info', 'You are now signed in' );
     }
 
+    /**
+     * Authorize a user
+     *
+     * @param Request $request
+     * @return mixed
+     */
     public function postSignIn( Request $request ){
         $this->validate( $request, [
             'email'    => 'required',
@@ -43,6 +66,11 @@ class AuthController extends Controller
             return redirect()->back()->withErrors('Could not sign you in with those details' );
     }
 
+    /**
+     * Log out a user and redirect on home page
+     *
+     * @return mixed
+     */
     public function getSignOut( ){
         Auth::logout();
         return redirect()->route( 'home' );
