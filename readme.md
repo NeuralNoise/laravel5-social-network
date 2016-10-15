@@ -1,3 +1,7 @@
+# Laravel 5 Social Network 
+
+This project was build to show how simply can be to create 'Social Network' with such a great framework like Laravel
+
 # Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
@@ -13,6 +17,16 @@ Laravel is accessible, yet powerful, providing tools needed for large, robust ap
 ## Official Documentation
 
 Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+
+## Features:
+1. Ability to add friends
+2. Post comments
+3. Add likes
+
+## Code Coverage
+
+Currently in progress
+
 
 ## Contributing
 
