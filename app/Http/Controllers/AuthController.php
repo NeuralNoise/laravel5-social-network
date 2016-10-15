@@ -10,13 +10,15 @@ use Illuminate\Support\Facades\Redirect;
 
 class AuthController extends Controller
 {
+
     /**
      * Show Sign Up page
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getSignUp() {
-        return view( 'auth.signup' );
+    public function getSignUp()
+    {
+        return view('auth.signup');
     }
 
     /**
@@ -24,8 +26,9 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getSignIn() {
-        return view( 'auth.signin' );
+    public function getSignIn()
+    {
+        return view('auth.signin');
     }
 
     /**
@@ -34,17 +37,20 @@ class AuthController extends Controller
      * @param Request $request
      * @return mixed
      */
-    public function postSignUp( Request $request ) {
+    public function postSignUp(Request $request)
+    {
 
-        $this->validate( $request, User::$rules );
+        $this->validate($request, User::$rules);
 
-        User::create( [
-            'email'    => $request->input( 'email' ),
-            'username' => $request->input( 'username' ),
-            'password' => bcrypt( $request->input( 'password' ) ),
-        ] );
+        $user = User::create([
+            'email' => $request->input('email'),
+            'username' => $request->input('username'),
+            'password' => bcrypt($request->input('password')),
+        ]);
 
-        return redirect()->intended('home')->with( 'info', 'You are now signed in' );
+        Auth::loginUsingId($user->id);
+
+        return redirect()->intended('cabinet')->with('info', 'You are now signed in');
     }
 
     /**
@@ -53,17 +59,19 @@ class AuthController extends Controller
      * @param Request $request
      * @return mixed
      */
-    public function postSignIn( Request $request ){
-        $this->validate( $request, [
-            'email'    => 'required',
-            'password' => 'required'
-        ] );
+    public function postSignIn(Request $request)
+    {
 
-        if ( Auth::attempt( $request->only( [ 'email', 'password' ] ), $request->has( 'remember' ) ) ) {
-            return redirect()->intended()->with( 'info', 'You are now signed in' );
+        $this->validate($request, [
+            'email' => 'required',
+            'password' => 'required'
+        ]);
+
+        if (Auth::attempt($request->only(['email', 'password']), $request->has('remember'))) {
+            return redirect()->intended('cabinet')->with('info', 'You are now signed in');
         }
 
-            return redirect()->back()->withErrors('Could not sign you in with those details' );
+        return redirect()->back()->withErrors('Could not sign you in with those details');
     }
 
     /**
@@ -71,8 +79,9 @@ class AuthController extends Controller
      *
      * @return mixed
      */
-    public function getSignOut( ){
+    public function getSignOut()
+    {
         Auth::logout();
-        return redirect()->route( 'home' );
+        return redirect()->route('home');
     }
 }
