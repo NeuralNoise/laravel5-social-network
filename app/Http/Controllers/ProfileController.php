@@ -34,6 +34,7 @@ class ProfileController extends Controller
     ] );
 
     Auth::user()->update( $request->except('_token') );
-    return redirect()->route( 'profile.edit' )->with( 'info', 'Your profile was updated' );
+
+    return view( 'profile.edit' )->with( 'info', 'Your profile was updated' );
   }
 }
