@@ -10,7 +10,11 @@ use App\Http\Requests;
 
 class FriendController extends Controller
 {
-    //
+    /**
+     * Display a list of friends
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function getIndex( ){
         $auth_user = Auth::user();
         $friends = $auth_user->friends();
@@ -19,6 +23,12 @@ class FriendController extends Controller
         return view( 'friends.index', compact('friends', 'friend_requests') );
     }
 
+    /**
+     * Add friend
+     *
+     * @param $username
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function getAdd( $username ) {
         $user             = User::where( 'username', $username )->first();
         $auth_user        = Auth::user();
@@ -49,6 +59,12 @@ class FriendController extends Controller
 
     }
 
+    /**
+     * Accept request to be a friend for specific user
+     *
+     * @param $username
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function getAccept( $username ){
         $user             = User::where( 'username', $username )->first();
 
