@@ -9,12 +9,21 @@ use App\Http\Requests;
 
 class HomeController extends Controller
 {
-    //
+    /**
+     * Display Home page
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         return view('home');
     }
 
+    /**
+     * Show cabinet for authorized user
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function showCabinet()
     {
         $statuses = Status::notReply()->where(function ($query) {
