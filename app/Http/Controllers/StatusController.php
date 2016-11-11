@@ -9,7 +9,12 @@ use App\Http\Requests;
 
 class StatusController extends Controller
 {
-    //
+    /**
+     * Save status
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function postStatus(Request $request)
     {
         $this->validate($request, [
@@ -21,9 +26,16 @@ class StatusController extends Controller
         return redirect()->route('home')->with('info', 'Status posted');
     }
 
+    /**
+     * Save comment for particular status
+     *
+     * @param Request $request
+     * @param $statusId
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function postReply(Request $request, $statusId)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             "reply-{$statusId}" => 'required|max:1000',
         ]);
 
@@ -48,20 +60,26 @@ class StatusController extends Controller
         return redirect()->back();
     }
 
-    public function getLike($statusId){
+    /**
+     * Get likes for particular status
+     *
+     * @param $statusId
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function getLike($statusId)
+    {
         $status = Status::find($statusId);
         $redirect_home = redirect()->route('home');
-        $redirect_back =  redirect()->back();
-        if(!$status) {
+        $redirect_back = redirect()->back();
+        if (!$status) {
             return $redirect_home;
         }
 
-        if(!Auth::user()->isFriendsWith($status->user)){
+        if (!Auth::user()->isFriendsWith($status->user)) {
             return $redirect_home;
         }
 
-        if(Auth::user()->hasLikedStatus($status))
-        {
+        if (Auth::user()->hasLikedStatus($status)) {
             return $redirect_back;
         }
 
