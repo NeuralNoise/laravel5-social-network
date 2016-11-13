@@ -66,7 +66,7 @@ class FriendController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
     public function getAccept( $username ){
-        $user             = User::where( 'username', $username )->first();
+        $user = User::where( 'username', $username )->first();
 
         if ( !$user ) {
             return redirect()->back()->with( 'info', "User couldn't be find" );
