@@ -6,13 +6,11 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class SignUpTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
+
     public function testNewUserRegistration()
     {
+        $this->withoutMiddleware();
+
         $this->visit('/signup')
             ->type('test@gustr.com', 'email')
             ->type('test100', 'username')
