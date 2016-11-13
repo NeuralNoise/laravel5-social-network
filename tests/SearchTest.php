@@ -6,13 +6,19 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class SearchTest extends TestCase
 {
+
+    use WithoutMiddleware;
+
     /**
-     * A basic test example.
+     * Test if user not exist
      *
      * @return void
      */
-    public function testExample()
+    public function testUserNotExist()
     {
-        $this->assertTrue(true);
+        $this->visit('/cabinet')
+            ->type('abracadra', 'query')
+            ->press('Search')
+            ->see('No Results found');
     }
 }
