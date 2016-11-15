@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Faker\Factory as Faker;
 
 class FriendsTableSeeder extends Seeder
 {
@@ -12,5 +13,13 @@ class FriendsTableSeeder extends Seeder
     public function run()
     {
         //
+        $faker = Faker::create();
+        foreach (range(1, 10) as $index):
+            DB::table('users')->insert([
+                'user_id' => $faker->randomDigit,
+                'friend_id' => $faker->randomDigit,
+                'accepted' => $faker->randomNumber(1),
+            ]);
+        endforeach;
     }
 }
