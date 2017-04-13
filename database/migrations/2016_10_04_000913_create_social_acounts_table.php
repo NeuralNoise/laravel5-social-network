@@ -12,7 +12,7 @@ class CreateSocialAcountsTable extends Migration
      */
     public function up()
     {
-        if (Schema::hasTable('social_accounts')) {
+        if (!Schema::hasTable('social_accounts')) {
 
             Schema::create('social_accounts', function (Blueprint $table) {
                 $table->increments('id');

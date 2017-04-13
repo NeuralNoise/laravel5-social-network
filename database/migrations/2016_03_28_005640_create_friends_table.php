@@ -13,7 +13,7 @@ class CreateFriendsTable extends Migration
     public function up()
     {
         //
-        if (Schema::hasTable('friends')) {
+        if (!Schema::hasTable('friends')) {
             Schema::create('friends', function (Blueprint $table) {
                 $table->increments('id');
                 $table->integer('user_id');
