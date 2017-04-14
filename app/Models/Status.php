@@ -24,7 +24,7 @@ class Status extends Model
 
     public function replies()
     {
-		return $this->hasMany('App\Models\Status', 'parent_id');
+        return $this->hasMany('App\Models\Status', 'parent_id');
     }
 
     public function likes()

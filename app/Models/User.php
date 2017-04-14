@@ -124,6 +124,6 @@ class User extends Authenticatable
 
     public function hasLikedStatus(Status $status)
     {
-        return (bool) $status->likes->where('user_id', $this->id)->count();
+        return (bool)$status->likes->where('user_id', $this->id)->count();
     }
 }

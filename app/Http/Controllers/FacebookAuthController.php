@@ -11,11 +11,13 @@ use Socialite;
 class FacebookAuthController extends Controller
 {
     //
-    public function redirect(){
+    public function redirect()
+    {
         return Socialite::driver('facebook')->redirect();
     }
 
-    public function callback(SocialAccountService $service){
+    public function callback(SocialAccountService $service)
+    {
         $user = $service->createOrGetUser(Socialite::driver('facebook')->user());
 
         auth()->login($user);
