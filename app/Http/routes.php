@@ -44,7 +44,7 @@ Route::group( [ 'middleware' => [ 'web' ] ], function () {
 
 	Route::group( [ 'middleware' => [ 'auth' ] ], function () {
 
-		Route::get( 'cabinet', ['uses' => 'HomeController@showCabinet']);
+		Route::get( 'cabinet', ['uses' => 'HomeController@showCabinet', 'as' => 'cabinet.index']);
 
 		Route::get('user/{username}', ['uses' => 'ProfileController@getProfile', 'as' => 'profile.index']);
 
