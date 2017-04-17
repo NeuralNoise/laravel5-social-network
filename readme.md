@@ -29,7 +29,7 @@ Currently in progress
 
 ## Changelog
 
-Please see [CHANGELOG](../blob/master/CHANGELOG) for more information what has changed recently.
+Please see [CHANGELOG](../master/changelog.md) for more information what has changed recently.
 
 ## Contributing
 
