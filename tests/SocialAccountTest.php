@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class SocialAccountTest extends TestCase
 {
     /**
-     * A basic test example.
+     * Check if link on Facebook presents
      *
      * @return void
      */
@@ -17,7 +17,7 @@ class SocialAccountTest extends TestCase
     }
 
     /**
-     * A basic test example.
+     * Check if response from Facebook will contains all needed data.
      *
      * @return void
      */
