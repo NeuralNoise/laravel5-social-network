@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default" role="navigation">
         <div class="container">
                 <div class="navbar-header">
-                        <a href="{{ route('home') }}" class="navbar-brand">Chatty App</a>
+                        <a href="{{ route('home') }}" class="navbar-brand">SocialNet App</a>
                 </div>
 
                 <div class="collapse navbar-collapse">
