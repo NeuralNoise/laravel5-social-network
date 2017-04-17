@@ -56,7 +56,7 @@ Route::group( [ 'middleware' => [ 'web' ] ], function () {
 		Route::get('friends', ['uses' => 'FriendController@getIndex', 'as' => 'friends.index']);
 		Route::get('friends/add/{username}', ['uses' => 'FriendController@getAdd', 'as' => 'friends.add']);
 		Route::get('friends/accept/{username}', ['uses' => 'FriendController@getAccept', 'as' => 'friends.accept']);
-		Route::get('friends/delete/{username}', ['uses' => 'FriendController@getDelete', 'as' => 'friends.delete']);
+		Route::post('friends/delete/{username}', ['uses' => 'FriendController@getDelete', 'as' => 'friends.delete']);
 		Route::post('status', ['uses' => 'StatusController@postStatus', 'as' => 'status.post']);
 		Route::post('status/{statusId}/reply', ['uses' => 'StatusController@postReply', 'as' => 'status.reply']);
 		Route::get('/status/{statusId}/like', ['uses' => 'StatusController@getLike', 'as' => 'status.like']);

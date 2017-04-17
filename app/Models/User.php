@@ -69,6 +69,11 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Models\User', 'friends', 'friend_id', 'user_id');
     }
 
+    public function friendOfUser()
+    {
+        return $this->belongsToMany('App\Models\User', 'friends', 'user_id', 'friend_id');
+    }
+
     public function statuses()
     {
         return $this->hasMany('App\Models\Status', 'user_id');
@@ -103,6 +108,11 @@ class User extends Authenticatable
     public function addFriend(User $user)
     {
         $this->friendOf()->attach($user->id);
+    }
+
+    public function deleteFriend(User $user)
+    {
+        $this->friendOfUser()->detach($user->id);
     }
 
     public function acceptFriendRequest(User $user)

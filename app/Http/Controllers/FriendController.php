@@ -84,4 +84,26 @@ class FriendController extends Controller
         return redirect()->route('profile.index', ['username' => $username])
             ->with('info', 'Friend request accepted.');
     }
+
+    /**
+     * Delete specific user from list of friends
+     *
+     * @param $username
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function getDelete($username)
+    {
+        $user = User::where('username', $username)->first();
+        $auth_user = Auth::user();
+        $redirect_profile = redirect()
+            ->route('profile.index', ['username' => $user->username]);
+
+        if (!$user) {
+            return redirect()->back()->with('info', "User couldn't be find");
+        }
+
+        $auth_user->deleteFriend($user);
+
+        return $redirect_profile->with('info', 'User ' . $user->username. ' was removed from list of friends');
+    }
 }
