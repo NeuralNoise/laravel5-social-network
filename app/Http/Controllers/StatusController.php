@@ -10,7 +10,7 @@ use App\Http\Requests;
 class StatusController extends Controller
 {
     /**
-     * Save status
+     * Save User status
      *
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
@@ -23,7 +23,7 @@ class StatusController extends Controller
 
         Auth::user()->statuses()->create(['body' => $request->input('status')]);
 
-        return redirect()->route('home')->with('info', 'Status posted');
+        return redirect()->route('cabinet.index')->with('info', 'Status posted');
     }
 
     /**
