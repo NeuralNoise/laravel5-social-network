@@ -18,7 +18,7 @@ trait InitDatabaseTrait
         }
 
         $db = $this->app->make('db')->connection();
-        if (!file_exists($db->getDatabaseName())) {
+        if(!file_exists($db->getDatabaseName())) {
             touch($db->getDatabaseName());
         }
 

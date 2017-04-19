@@ -8,15 +8,12 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class SignInTest extends DuskTestCase
 {
-    /**
-     * A Dusk test example.
-     *
-     * @return void
-     */
-    public function testTitle()
+    /** @test */
+    public function test_sign_in_user1()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/')
+
+            $browser->visit('/signin')
                     ->assertSee('SocialNet');
         });
     }
