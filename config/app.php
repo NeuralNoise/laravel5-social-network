@@ -4,6 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+<<<<<<< HEAD
     | Application Name
     |--------------------------------------------------------------------------
     |
@@ -16,6 +17,8 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+=======
+>>>>>>> migrate54
     | Application Environment
     |--------------------------------------------------------------------------
     |
@@ -38,7 +41,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -51,7 +54,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://laravel5-social-network.and'),
 
     /*
     |--------------------------------------------------------------------------
@@ -173,9 +176,14 @@ return [
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+        /**
+         * Package Socialite
+         */
+        Laravel\Socialite\SocialiteServiceProvider::class
+        // App\Providers\BroadcastServiceProvider::class,
 
     ],
 
@@ -226,6 +234,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ],
 
 ];
