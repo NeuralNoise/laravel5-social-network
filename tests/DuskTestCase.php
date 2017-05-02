@@ -39,6 +39,7 @@ abstract class DuskTestCase extends BaseTestCase
      */
     protected function driver()
     {
+        //Can be used Phantom.js
         return RemoteWebDriver::create(
             env('APP_URL'), DesiredCapabilities::chrome()
         );

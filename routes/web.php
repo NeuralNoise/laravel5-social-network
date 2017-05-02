@@ -27,7 +27,6 @@ Route::get('/', ['uses' => 'HomeController@index', 'as' => 'home']);
 Route::get('/redirect', 'FacebookAuthController@redirect');
 Route::get('/callback', 'FacebookAuthController@callback');
 
-Route::group(['middleware' => ['web']], function () {
 
     Route::group(['middleware' => ['guest']], function () {
 
@@ -63,4 +62,3 @@ Route::group(['middleware' => ['web']], function () {
 
     });
 
-});

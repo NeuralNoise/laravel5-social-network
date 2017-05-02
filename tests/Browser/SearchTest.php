@@ -8,6 +8,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class SearchTest extends DuskTestCase
 {
+    use DatabaseMigrations;
     /**
      * A Dusk test example.
      *
@@ -16,8 +17,8 @@ class SearchTest extends DuskTestCase
     public function testSearch()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/')
-                    ->assertSee('SocialNet');
+            $browser->visit('/home')
+                ->assertPathIs('/home');
         });
     }
 }
