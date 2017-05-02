@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use App\Models\User;
+use App\User;
 use App\Http\Controllers;
 use Illuminate\Http\Request;
 
