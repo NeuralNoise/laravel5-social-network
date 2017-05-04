@@ -13,3 +13,4 @@ npm-debug.log
 /bootstrap/cache
 resources/assets/
 *.sqlite*
+FIXED_ISSUES.MD
