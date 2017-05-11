@@ -28,6 +28,7 @@ abstract class DuskTestCase extends BaseTestCase
      */
     public function setUpTraits()
     {
+        //Extend functionality of SetUpTraits
         $this->backupDatabase();
         parent::setUpTraits();
     }
