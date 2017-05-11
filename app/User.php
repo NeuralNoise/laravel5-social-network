@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'email', 'password',
+        'username', 'email', 'password', 'first_name', 'last_name', 'location'
     ];
 
     /**
@@ -26,6 +26,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
     protected $table = 'users';
 
     public static $rules = [
@@ -34,6 +35,17 @@ class User extends Authenticatable
         'password' => 'required|min:6',
     ];
 
+    public static $rules_update_profile = [
+        'first_name' => 'alpha_num|max:255',
+        'last_name' => 'alpha_num|max:255',
+        'location' => 'max:20',
+    ];
+
+    /**
+     * Get Full name of user
+     *
+     * @return null|string
+     */
     public function getName()
     {
         if ($this->first_name && $this->last_name)
@@ -45,16 +57,31 @@ class User extends Authenticatable
         return null;
     }
 
+    /**
+     * Get Full name or Username
+     *
+     * @return mixed
+     */
     public function getNameOrUsername()
     {
         return $this->getName() ?: $this->username;
     }
 
+    /**
+     * Get First name or Username
+     *
+     * @return mixed
+     */
     public function getFirstNameOrUsername()
     {
         return $this->first_name ?: $this->username;
     }
 
+    /**
+     * Get user avatar
+     *
+     * @return string
+     */
     public function getAvatarUrl()
     {
         return "https://www.gravatar.com/avatar/{{ md5($this->email) }}?d=mm&s=40";
