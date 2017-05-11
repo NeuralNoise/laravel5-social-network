@@ -2,6 +2,10 @@
 
 All Notable changes to `laravel5-social-network` will be documented in this file
 
+## 1.3.0 - 2017-04-18
+
+- integrate Laravel Dusk
+
 ## 1.2.0 - 2017-04-17
 
 - upgrade to 5.4 in branch 'laravel54'
