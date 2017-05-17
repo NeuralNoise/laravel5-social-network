@@ -4,19 +4,34 @@ namespace Tests\Browser;
 
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+use App\User;
+use App\Traits\InitDatabaseTrait;
 
 class SignUpTest extends DuskTestCase
 {
+    use InitDatabaseTrait, DatabaseTransactions;
+
+    public static $testUser = [
+        'username' => 'test101',
+        'email' => 'test101@gustr.com',
+        'password' => 'qwerty'
+    ];
+
     /** @test */
     public function test_signup_user()
     {
-        $this->browse(function (Browser $browser) {
+        //Override user data from Model Factory
+        $user = factory(User::class)->create(self::$testUser);
+
+        $this->browse(function (Browser $browser) use ($user) {
             $browser->visit('/signup')
-                ->type('email', 'test1@gustr.com')
-                ->type('username', 'test1')
-                ->type('password', 'test')
-                ->assertSee('SocialNet');
+                ->type('email', $user->email)
+                ->type('username', $user->username)
+                ->type('password', 'qwerty')
+                ->press('Sign up')
+                ->assertPathIs('/cabinet')
+                ->logout();
         });
     }
 
