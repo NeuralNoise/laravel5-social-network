@@ -16,6 +16,8 @@
 1. User1 sends request to be a friend to User2. User2 see message.
 2. User1 sends request to be a friend to User2, but User2 is not logged in. Notification sends to User2 on email
 
+##ADD STATUS
+
 ##CONFIRM REQUEST TO FRIEND
 1. User1 sends request to be a friend to User2. User2 confirms request.
 
