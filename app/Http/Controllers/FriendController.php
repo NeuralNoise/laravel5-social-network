@@ -25,7 +25,7 @@ class FriendController extends Controller
     }
 
     /**
-     * Add friend
+     * Send request be a friend
      *
      * @param $username
      * @return \Illuminate\Http\RedirectResponse
