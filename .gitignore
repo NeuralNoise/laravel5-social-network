@@ -1,6 +1,16 @@
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
 /vendor
+/.idea
+/.vagrant
+Homestead.json
+Homestead.yaml
+npm-debug.log
 .env
 /storage
 /bootstrap/cache
-/.idea
 resources/assets/
+*.sqlite*
+FIXED_ISSUES.MD

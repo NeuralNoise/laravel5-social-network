@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Models;
-
-use App\Models\Status;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+use Notifiable;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'first_name', 'last_name', 'location'
+        'username', 'email', 'password', 'first_name', 'last_name', 'location'
     ];
 
     /**
@@ -61,12 +61,17 @@ class User extends Authenticatable
 
     public function friendsOfMine()
     {
-        return $this->belongsToMany('App\Models\User', 'friends', 'user_id', 'friend_id');
+        return $this->belongsToMany('App\User', 'friends', 'user_id', 'friend_id');
     }
 
     public function friendOf()
     {
-        return $this->belongsToMany('App\Models\User', 'friends', 'friend_id', 'user_id');
+        return $this->belongsToMany('App\User', 'friends', 'friend_id', 'user_id');
+    }
+
+    public function friendOfUser()
+    {
+        return $this->belongsToMany('App\User', 'friends', 'user_id', 'friend_id');
     }
 
     public function statuses()
@@ -103,6 +108,11 @@ class User extends Authenticatable
     public function addFriend(User $user)
     {
         $this->friendOf()->attach($user->id);
+    }
+
+    public function deleteFriend(User $user)
+    {
+        $this->friendOfUser()->detach($user->id);
     }
 
     public function acceptFriendRequest(User $user)

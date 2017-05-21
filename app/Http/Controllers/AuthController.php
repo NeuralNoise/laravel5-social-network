@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
-use App\Models\User;
+use App\User;
 use Illuminate\Support\Facades\Redirect;
 
 class AuthController extends Controller
