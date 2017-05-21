@@ -31,6 +31,9 @@ Documentation for the framework can be found on the [Laravel website](http://lar
 
 Currently in progress
 
+## Changelog
+
+Please see [CHANGELOG](../master/changelog.md) for more information what has changed recently.
 
 ## Contributing
 
