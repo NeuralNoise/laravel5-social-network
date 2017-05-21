@@ -2,6 +2,10 @@
 
 All Notable changes to `laravel5-social-network` will be documented in this file
 
+## 1.3.2 - 2017-05-22
+
+- add Travis CI
+
 ## 1.3.1 - 2017-04-27
 
 - fix exceptions
