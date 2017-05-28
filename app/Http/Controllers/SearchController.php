@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\User;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers;
 use Illuminate\Http\Request;
@@ -24,8 +24,9 @@ class SearchController extends Controller
             return redirect()->route('home');
         }
 
-        $users = User::where(DB::raw("CONCAT(first_name, ' ' ,last_name)"), 'LIKE', "%{$query}%")
+        $users = User::where(DB::raw("first_name + ' ' + last_name"), 'LIKE', "%{$query}%")
             ->orWhere('username', 'LIKE', "%{$query}%")
+            ->orWhere('email', 'LIKE', "{$query}%")
             ->get();
         return view('search.results', compact('users'));
     }

@@ -20,7 +20,7 @@ abstract class DuskTestCase extends BaseTestCase
      */
     public static function prepare()
     {
-        //  static::startChromeDriver();
+          static::startChromeDriver();
     }
 
     /**
@@ -28,6 +28,7 @@ abstract class DuskTestCase extends BaseTestCase
      */
     public function setUpTraits()
     {
+        //Extend functionality of SetUpTraits
         $this->backupDatabase();
         parent::setUpTraits();
     }
@@ -39,8 +40,9 @@ abstract class DuskTestCase extends BaseTestCase
      */
     protected function driver()
     {
+        //Can be used Phantom.js
         return RemoteWebDriver::create(
-            env('APP_URL'), DesiredCapabilities::chrome()
+            env('APP_URL') . ':9515', DesiredCapabilities::chrome()
         );
     }
 }

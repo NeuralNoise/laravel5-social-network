@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use App\Models\User;
+use App\User;
 use App\Http\Controllers;
 use Illuminate\Http\Request;
 
@@ -46,11 +46,7 @@ class ProfileController extends Controller
      */
     public function postEdit(Request $request)
     {
-        $this->validate($request, [
-            'first_name' => 'alpha_num|max:255',
-            'last_name' => 'alpha_num|max:255',
-            'location' => 'max:20',
-        ]);
+        $this->validate($request, User::$rules_update_profile);
 
         Auth::user()->update($request->except('_token'));
 

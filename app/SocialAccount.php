@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
+use App\User;
 
 class SocialAccount extends Model
 {
