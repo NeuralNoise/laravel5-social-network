@@ -159,7 +159,7 @@ return [
         /**
          * Package Socialite
          */
-        Laravel\Socialite\SocialiteServiceProvider::class
+//        Laravel\Socialite\SocialiteServiceProvider::class
     ],
 
     /*
